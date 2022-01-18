@@ -175,8 +175,9 @@ def filefinding(contents , filename):
         edgesdf = None
         nodedf = None
                
+slectedNode_list = []
 def networkgrapg(edgesdf, nodedf, ip_Node):
-    slectedNode_list = []
+    
     mydata1, nodes_list = Data_foramting(edgesdf, nodedf)
     edges_color , nodes_color  = Color_egdesnodes(edgesdf, nodedf)
     
@@ -215,38 +216,38 @@ def networkgrapg(edgesdf, nodedf, ip_Node):
 
         
         
-    if ip_Node['nodes'][0] == node_selected:
-            unique_groupNode = np.unique(slectedNode_list)
-            # edge filtering
-            z = []
-            edges = []
-            for i in mydata1['edges']:
-                if (i['from']) in unique_groupNode  or (i['to'] in unique_groupNode):
-                    x = i['from']
-                    y = i['to']
-                    z.append(x)
-                    z.append(y)
-                    edges.append(i)
-            node_list = list(set(z))
-            # cluster_nodes contains all nodes   selected nodes  +  free suspended nodes 
-            node_list.extend(first_clusternodes)
+        if ip_Node['nodes'][0] == node_selected:
+                unique_groupNode = np.unique(slectedNode_list)
+                # edge filtering
+                z = []
+                edges = []
+                for i in mydata1['edges']:
+                    if (i['from']) in unique_groupNode  or (i['to'] in unique_groupNode):
+                        x = i['from']
+                        y = i['to']
+                        z.append(x)
+                        z.append(y)
+                        edges.append(i)
+                node_list = list(set(z))
+                # cluster_nodes contains all nodes   selected nodes  +  free suspended nodes 
+                node_list.extend(first_clusternodes)
                 
                 #node filtering
-            node = []
-            for i in mydata1['node']:
-                if (i['id']) in node_list:
-                    node.append(i)
+                node = []
+                for i in mydata1['node']:
+                    if (i['id']) in node_list:
+                        node.append(i)
         
-                # parsing new nodes and edges to display network graph     
-            mydata ={ 'nodes':node,'edges':edges }
+                    # parsing new nodes and edges to display network graph     
+                mydata ={ 'nodes':node,'edges':edges }
                
                    # parse  unexplored nodes            
-            if node_selected in nodes_list:
-                nodes_list.remove(node_selected)
-            unclicked = [i   for i in nodes_list]
-            unexplorednodes = "Unselected Node: " + str(unclicked)
+                if node_selected in nodes_list:
+                    nodes_list.remove(node_selected)
+                unclicked = [i   for i in nodes_list]
+                unexplorednodes = "Unselected Node: " + str(unclicked)
             
-            print("end") 
-             #return [op_node, mydata,unexplorednodes ]             
-            #return [op_node, mydata]
-            return [ mydata]
+                print("end") 
+                #return [op_node, mydata,unexplorednodes ]             
+                #return [op_node, mydata]
+        return [ mydata]
