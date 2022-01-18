@@ -15,7 +15,7 @@ from layout  import *
 app = dash.Dash(__name__, )
 server = app.server
 
-app.layout = get_app_layout()
+app.layout = get_app_layout
 
 
 @app.callback([Output('net', 'data')],
