@@ -43,7 +43,6 @@ tenacity==8.0.1
 threadpoolctl==3.0.0
 tomli==1.2.2
 visdcc==0.0.40
-sys
 networkx
 base64
 datetime
