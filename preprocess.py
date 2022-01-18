@@ -180,7 +180,7 @@ def networkgrapg(edgesdf, nodedf, ip_Node):
     mydata1, nodes_list = Data_foramting(edgesdf, nodedf)
     edges_color , nodes_color  = Color_egdesnodes(edgesdf, nodedf)
     
-        # calling initial node list 
+    # calling initial node list 
     first_clusternodes , sub_graph= initial_nodes(edgesdf)
     
     # calling initial node dict object 
@@ -194,7 +194,7 @@ def networkgrapg(edgesdf, nodedf, ip_Node):
     # Display initial clusters [Before any node selection]
     if len(ip_Node['nodes']) ==0:
         #mydata ={'nodes':[ mydata1['node'][0], mydata1['node'][5], mydata1['node'][6] ],
-        mydata ={'nodes':initial_nodeDict, 'edges':[ ]}
+        mydata ={'nodes':initial_nodeDict, 'edges':[]}
         #return [op_node , mydata,nodes_list ]
         #return [op_node , mydata ] 
         return [ mydata ] 
@@ -208,11 +208,6 @@ def networkgrapg(edgesdf, nodedf, ip_Node):
         op_node += str(ip_Node['nodes'][0])        
         node_selected = op_node.split(":")[1].replace(" ", "")
         slectedNode_list.append(node_selected)
-            
-            
-                  
-
-
         
         
         if ip_Node['nodes'][0] == node_selected:
