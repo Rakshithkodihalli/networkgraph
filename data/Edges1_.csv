@@ -1,0 +1,3 @@
+from,to,Edge_weight,width,Type
+P1,P2,8,8,A
+P2,P1,2,2,A
