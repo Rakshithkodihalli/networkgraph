@@ -170,7 +170,6 @@ def filefinding(contents , filename):
         edgesdf = pd.read_csv(io.StringIO(decoded.decode('utf-8')))
         nodedf = None
         return edgesdf , nodedf
-        
     else :
         edgesdf = None
         nodedf = None
