@@ -82,10 +82,7 @@ def get_options():
     
     
 def get_app_layout( ):
-    #this_dir, _ = os.path.split(__file__)
-    #image_filename = "assest", "logo.png"
-    
-    
+   
     encoded_image = base64.b64encode(open((os.path.join(os.path.dirname(__file__), 'assest/logo.PNG')), 'rb').read())
     return  html.Div([
             (html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()), width="50px")),
@@ -102,6 +99,8 @@ def get_app_layout( ):
         # Allow multiple files to be uploaded
         multiple=True ),
         html.Button('Submit', id='submit_', n_clicks=0),
+        html.Button('Reset',id='reset_button', n_clicks=0),
+        
         #html.Div('Double click to delete graph'),
         #html.Div(id='file loaded'),
 
@@ -120,6 +119,9 @@ def get_app_layout( ):
       #visdcc.Network(id = 'net',selection = {'nodes':[], 'edges':[]},  options = dict(height= '600px', width= '100%')),
       visdcc.Network(id = 'net',selection = {'nodes':[], 'edges':[]}, options = get_options()),
       
+      
       ])
 
-    
+
+
+

@@ -3,7 +3,6 @@ import dash
 from dash.dependencies import Input, Output, State
 from dash import dcc, html
 import visdcc
-#from demos import dash_reusable_components as drc
 from  preprocess import  initial_nodes, Data_foramting , Color_egdesnodes , networkgrapg, filefinding
 import numpy as np
 import sys
@@ -13,10 +12,21 @@ from layout  import *
 
 
 
+
+
+
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets,suppress_callback_exceptions=True)
 server = app.server
+
+
+
+
+
+
+
+
 app.layout = get_app_layout
 
 
@@ -29,9 +39,11 @@ app.layout = get_app_layout
 
 
 def upload_data(contents, filename, date,  n_clicks, ip_Node):
+    print(n_clicks)
     if (n_clicks ==0) or (contents is None and n_clicks > 0):
-        edgesdf= pd.read_csv('data/Edges1_.csv')
-        nodedf = pd.read_csv('data/Node1_.csv')
+        
+        edgesdf= pd.read_csv('data/edgess.csv')
+        nodedf = pd.read_csv('data/nodee.csv')
         mydata = networkgrapg(edgesdf , nodedf, ip_Node)       
         return(mydata)
             
@@ -41,7 +53,13 @@ def upload_data(contents, filename, date,  n_clicks, ip_Node):
         #print(mydata)
         return(mydata)
     
-  
+
+@app.callback([Output('submit_','n_clicks'), Output('net', 'selection')],
+             Input('reset_button','n_clicks'))
+def update(reset):
+    
+    
+    return 0,  {'nodes': [], 'edges': []}
        
     
 if __name__ == '__main__':   

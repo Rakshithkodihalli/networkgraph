@@ -167,9 +167,7 @@ def filefinding(contents , filename):
                
 slectedNode_list = []
 def networkgrapg(edgesdf, nodedf, ip_Node):
-   
-    
-    
+        
     mydata1, nodes_list = Data_foramting(edgesdf, nodedf)
     edges_color , nodes_color  = Color_egdesnodes(edgesdf, nodedf)
     
