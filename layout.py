@@ -10,9 +10,9 @@ import dash_bootstrap_components as dbc
 
 
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+#external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets,suppress_callback_exceptions=True)
+#app = dash.Dash(__name__, external_stylesheets=external_stylesheets,suppress_callback_exceptions=True)
 
 # Constants
 # --------------
@@ -55,16 +55,6 @@ KELLY_COLORS_HEX = [
     "#232C16",  # Dark Olive Green
     ]
 
-'''
-def get_options(directed, opts_args):
-    opts = DEFAULT_OPTIONS.copy()
-    opts['edges'] = { 'arrows': { 'to': directed } }
-    if opts_args is not None:
-        opts.update(opts_args)
-    return opts
-'''
-
-
 
 
 DEFAULT_OPTIONS = dict(height = '700px',width= '100%',
@@ -92,10 +82,6 @@ def create_row(children, style=fetch_flex_row_style()):
     
     
 def get_app_layout( ):
-    
-    #edges_color = ['A']
-    #nodes_color = ['B']
-    
     #this_dir, _ = os.path.split(__file__)
     #image_filename = os.path.join(this_dir, "assest", "logo.png")
     #encoded_image = base64.b64encode(open(image_filename, 'rb').read())
@@ -135,29 +121,3 @@ def get_app_layout( ):
       ])
 
     
-    
-def basic_get_app_layout():
-    
-    #edges_color = ['A']
-    #nodes_color = ['B']
-    
-    this_dir, _ = os.path.split(__file__)
-    image_filename = os.path.join(this_dir, "assest", "logo.png")
-    encoded_image = base64.b64encode(open(image_filename, 'rb').read())
-    return html.Div([
-            #create_row(html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()), width="100px")),
-            dcc.Upload(id='upload-data',
-            children=html.Div(['Drag and Drop or ',html.A('Select Files')]),style={
-            'width': '100%',
-            'height': '60px',
-            'lineHeight': '60px',
-            'borderWidth': '1px',
-            'borderStyle': 'dashed',
-            'borderRadius': '5px',
-            'textAlign': 'center',
-            'margin': '10px' },
-        # Allow multiple files to be uploaded
-        multiple=True ),
-        html.Button('Submit', id='submit_', n_clicks=0),
-        html.Div(id='file loaded'),])
-
