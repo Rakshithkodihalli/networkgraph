@@ -170,6 +170,8 @@ def filefinding(contents , filename):
                
 slectedNode_list = []
 def networkgrapg(edgesdf, nodedf, ip_Node):
+   
+    
     
     mydata1, nodes_list = Data_foramting(edgesdf, nodedf)
     edges_color , nodes_color  = Color_egdesnodes(edgesdf, nodedf)
@@ -188,21 +190,17 @@ def networkgrapg(edgesdf, nodedf, ip_Node):
     # Display initial clusters [Before any node selection]
     if len(ip_Node['nodes']) ==0:
         #mydata ={'nodes':[ mydata1['node'][0], mydata1['node'][5], mydata1['node'][6] ],
-        mydata ={'nodes':initial_nodeDict, 'edges':[]}
-        #return [op_node , mydata,nodes_list ]
-        #return [op_node , mydata ] 
+        mydata ={'nodes':initial_nodeDict, 'edges':[]}        
         return [ mydata ] 
-
-
-
-
-    # Display nodes and edges on user choose [ Atlest one node selection]
+   
+   
+        # Display nodes and edges on user choose [ Atlest one node selection]
     if len(ip_Node['nodes']) > 0 :
         print("start")
         op_node += str(ip_Node['nodes'][0])        
         node_selected = op_node.split(":")[1].replace(" ", "")
         slectedNode_list.append(node_selected)
-        
+      
         
         if ip_Node['nodes'][0] == node_selected:
                 unique_groupNode = np.unique(slectedNode_list)
@@ -226,7 +224,7 @@ def networkgrapg(edgesdf, nodedf, ip_Node):
                     if (i['id']) in node_list:
                         node.append(i)
         
-                    # parsing new nodes and edges to display network graph     
+                # parsing new nodes and edges to display network graph     
                 mydata ={ 'nodes':node,'edges':edges }
                
                    # parse  unexplored nodes            
@@ -234,7 +232,6 @@ def networkgrapg(edgesdf, nodedf, ip_Node):
                     nodes_list.remove(node_selected)
                 unclicked = [i   for i in nodes_list]
                 unexplorednodes = "Unselected Node: " + str(unclicked)
-            
                 print("end") 
                 #return [op_node, mydata,unexplorednodes ]             
                 #return [op_node, mydata]

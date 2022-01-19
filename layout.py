@@ -131,6 +131,7 @@ def get_app_layout( ):
                 #]),
       #visdcc.Network(id = 'net',selection = {'nodes':[], 'edges':[]},  options = dict(height= '600px', width= '100%')),
       visdcc.Network(id = 'net',selection = {'nodes':[], 'edges':[]}, options= DEFAULT_OPTIONS),
+      
       ])
 
     
