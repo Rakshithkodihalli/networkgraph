@@ -83,10 +83,10 @@ def get_options():
     
 def get_app_layout( ):
     #this_dir, _ = os.path.split(__file__)
-    #image_filename = os.path.join(this_dir, "assest", "logo.png")
-    #encoded_image = base64.b64encode(open(image_filename, 'rb').read())
+    #image_filename = "assest", "logo.png"
+    encoded_image = base64.b64encode(open('assest/logo.png', 'rb').read())
     return  html.Div([
-            #(html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()), width="50px")),
+            (html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()), width="50px")),
             dcc.Upload(id='upload-data',children=html.Div(['Drag and Drop or ',html.A('Select Files')]),
             style={
             'width': '100%',
