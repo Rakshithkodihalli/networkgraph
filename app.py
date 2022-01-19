@@ -16,11 +16,7 @@ from layout  import *
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets,suppress_callback_exceptions=True)
-
-
-
 server = app.server
-
 app.layout = get_app_layout
 
 
@@ -39,7 +35,7 @@ def upload_data(contents, filename, date,  n_clicks, ip_Node):
         nodedf = pd.read_csv('data/Node1_.csv')
         #print(ip_Node)
         mydata = networkgrapg(edgesdf , nodedf, ip_Node)
-        
+        print(mydata)       
         return(mydata)
             
     if (contents is not None and n_clicks >=1):

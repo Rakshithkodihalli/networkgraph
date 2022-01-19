@@ -10,14 +10,11 @@ import dash_bootstrap_components as dbc
 
 
 
-#external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-#app = dash.Dash(__name__, external_stylesheets=external_stylesheets,suppress_callback_exceptions=True)
 
 # Constants
 # --------------
 # default node and edge size
-DEFAULT_NODE_SIZE = 7
+DEFAULT_NODE_SIZE = 1
 DEFAULT_EDGE_SIZE = 1
 
 # default node and egde color
@@ -25,9 +22,11 @@ DEFAULT_COLOR = '#FFB300'
 
 
 colors = {
-    'background': '#111111',
+    'background': '#817066',
     'text': '#7FDBFF'
 }
+
+
 
 
 # Taken from https://stackoverflow.com/questions/470690/how-to-automatically-generate-n-distinct-colors
@@ -56,17 +55,13 @@ KELLY_COLORS_HEX = [
     ]
 
 
-
-DEFAULT_OPTIONS = dict(height = '700px',width= '100%',
-layout={'physics ' : {'stabilization':{'iterations': 3000}} , 
-        'plot_bgcolor': colors['background'],
-        'paper_bgcolor': colors['background'],
-        'font': {'color': colors['text']},
-        'interaction': {'hover': True},
-    
-        'edges': {'scaling': {'min': 0.5, 'max': 1}}, 'edges': {'arrows': { 'to': {'enabled': 'true'}}}, 'edges':{'color': 'red'},
-        'physics':{'stabilization':{'iterations': 100}}
-        })
+DEFAULT_OPTIONS = {
+    'height': '600px',
+    'width': '100%',
+    'interaction':{'hover': True},
+    'edges': {'scaling': {'min': 1, 'max': 5}},
+    'physics':{'stabilization':{'iterations': 100}},       
+}
 
 
 
@@ -79,16 +74,21 @@ def create_row(children, style=fetch_flex_row_style()):
                    className="column flex-display")
     
     
+def get_options():
+    opts = DEFAULT_OPTIONS.copy()
+    return opts
+    
+    
     
     
 def get_app_layout( ):
-    #this_dir, _ = os.path.split(__file__)
-    #image_filename = os.path.join(this_dir, "assest", "logo.png")
-    #encoded_image = base64.b64encode(open(image_filename, 'rb').read())
+    this_dir, _ = os.path.split(__file__)
+    image_filename = os.path.join(this_dir, "assest", "logo.png")
+    encoded_image = base64.b64encode(open(image_filename, 'rb').read())
     return  html.Div([
-            #create_row(html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()), width="100px")),
-            dcc.Upload(id='upload-data',
-            children=html.Div(['Drag and Drop or ',html.A('Select Files')]),style={
+            (html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()), width="50px")),
+            dcc.Upload(id='upload-data',children=html.Div(['Drag and Drop or ',html.A('Select Files')]),
+            style={
             'width': '100%',
             'height': '60px',
             'lineHeight': '60px',
@@ -100,7 +100,7 @@ def get_app_layout( ):
         # Allow multiple files to be uploaded
         multiple=True ),
         html.Button('Submit', id='submit_', n_clicks=0),
-        html.Div('Double click to delete graph'),
+        #html.Div('Double click to delete graph'),
         #html.Div(id='file loaded'),
 
         #create_row([dbc.Col([dbc.Form([html.H6("Color nodes/Edges")]),
@@ -116,7 +116,7 @@ def get_app_layout( ):
         #html.Div(id = 'unselectednodes')
                 #]),
       #visdcc.Network(id = 'net',selection = {'nodes':[], 'edges':[]},  options = dict(height= '600px', width= '100%')),
-      visdcc.Network(id = 'net',selection = {'nodes':[], 'edges':[]}, options= DEFAULT_OPTIONS),
+      visdcc.Network(id = 'net',selection = {'nodes':[], 'edges':[]}, options = get_options()),
       
       ])
 

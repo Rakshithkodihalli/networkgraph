@@ -102,7 +102,7 @@ def Color_egdesnodes(edgesdf, nodedf=None):
             edge_color.append(i)
     
     if len(edge_color) ==0:
-        edge_color = [None]#
+        edge_color = [None]
     
     
     node_color = []
@@ -151,7 +151,6 @@ def filefinding(contents , filename):
             content_type, content_string = contents[0].split(',')
             decoded = base64.b64decode(content_string)
             nodedf = pd.read_csv(io.StringIO(decoded.decode('utf-8')))
-            
             return edgesdf, nodedf
         
     
