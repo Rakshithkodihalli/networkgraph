@@ -14,26 +14,10 @@ from layout  import *
 
 
 
-
-
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets,suppress_callback_exceptions=True)
 server = app.server
-
-
-
-
-
-
-
-
 app.layout = get_app_layout
-
-       
-
-
-
 
 
 @app.callback([Output('net', 'data')],
@@ -45,11 +29,10 @@ app.layout = get_app_layout
 
 
 def upload_data(contents, filename, date,  n_clicks, ip_Node):
-    print(n_clicks)
     if (n_clicks ==0) or (contents is None and n_clicks > 0):
         
-        edgesdf= pd.read_csv('data/edgess.csv')
-        nodedf = pd.read_csv('data/nodee.csv')
+        edgesdf= pd.read_csv('edgess.csv')
+        nodedf = pd.read_csv('nodee.csv')
         mydata = networkgraph(edgesdf , nodedf, ip_Node)       
         return(mydata)
             

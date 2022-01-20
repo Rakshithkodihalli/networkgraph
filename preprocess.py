@@ -191,7 +191,7 @@ def networkgraph(edgesdf, nodedf, ip_Node):
    
         # Display nodes and edges on user choose [ Atlest one node selection]
     if len(ip_Node['nodes']) > 0 :
-        print("start")
+        #print("start")
         op_node += str(ip_Node['nodes'][0])  
         node_selected = op_node.split(":")[1].replace(" ", "")
         slectedNode_list.append(node_selected)
@@ -229,7 +229,7 @@ def networkgraph(edgesdf, nodedf, ip_Node):
                     nodes_list.remove(node_selected)
                 unclicked = [i   for i in nodes_list]
                 unexplorednodes = "Unselected Node: " + str(unclicked)
-                print("end") 
+                #print("end") 
                 #return [op_node, mydata,unexplorednodes ]             
                 #return [op_node, mydata]
         return [ mydata]
