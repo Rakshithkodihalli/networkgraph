@@ -31,8 +31,8 @@ app.layout = get_app_layout
 def upload_data(contents, filename, date,  n_clicks, ip_Node):
     if (n_clicks ==0) or (contents is None and n_clicks > 0):
         
-        edgesdf= pd.read_csv('edgess.csv')
-        nodedf = pd.read_csv('nodee.csv')
+        edgesdf= pd.read_csv('data/edgess.csv')
+        nodedf = pd.read_csv('data/nodee.csv')
         mydata = networkgraph(edgesdf , nodedf, ip_Node)       
         return(mydata)
             
