@@ -3,7 +3,8 @@ import dash
 from dash.dependencies import Input, Output, State
 from dash import dcc, html
 import visdcc
-from  preprocess import  initial_nodes, Data_foramting , Color_egdesnodes , networkgrapg, filefinding
+#import preprocess
+from  preprocess import  initial_nodes, Data_foramting , Color_egdesnodes , networkgraph, filefinding, slectedNode_list
 import numpy as np
 import sys
 import os
@@ -29,6 +30,11 @@ server = app.server
 
 app.layout = get_app_layout
 
+       
+
+
+
+
 
 @app.callback([Output('net', 'data')],
               Input('upload-data', 'contents'),
@@ -44,12 +50,12 @@ def upload_data(contents, filename, date,  n_clicks, ip_Node):
         
         edgesdf= pd.read_csv('data/edgess.csv')
         nodedf = pd.read_csv('data/nodee.csv')
-        mydata = networkgrapg(edgesdf , nodedf, ip_Node)       
+        mydata = networkgraph(edgesdf , nodedf, ip_Node)       
         return(mydata)
             
     if (contents is not None and n_clicks >=1):
         edgesdf , nodedf = filefinding(contents, filename)
-        mydata = networkgrapg(edgesdf , nodedf, ip_Node)
+        mydata = networkgraph(edgesdf , nodedf, ip_Node)
         #print(mydata)
         return(mydata)
     
@@ -57,13 +63,16 @@ def upload_data(contents, filename, date,  n_clicks, ip_Node):
 @app.callback([Output('submit_','n_clicks'), Output('net', 'selection')],
              Input('reset_button','n_clicks'))
 def update(reset):
-    
-    
+    slectedNode_list.clear()
     return 0,  {'nodes': [], 'edges': []}
-       
+    
+    
     
 if __name__ == '__main__':   
     app.run_server(debug=True)
+    
+    
+    
     
 
 

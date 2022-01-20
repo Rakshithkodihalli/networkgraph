@@ -166,7 +166,7 @@ def filefinding(contents , filename):
         nodedf = None
                
 slectedNode_list = []
-def networkgrapg(edgesdf, nodedf, ip_Node):
+def networkgraph(edgesdf, nodedf, ip_Node):
         
     mydata1, nodes_list = Data_foramting(edgesdf, nodedf)
     edges_color , nodes_color  = Color_egdesnodes(edgesdf, nodedf)
@@ -192,9 +192,11 @@ def networkgrapg(edgesdf, nodedf, ip_Node):
         # Display nodes and edges on user choose [ Atlest one node selection]
     if len(ip_Node['nodes']) > 0 :
         print("start")
-        op_node += str(ip_Node['nodes'][0])        
+        op_node += str(ip_Node['nodes'][0])  
         node_selected = op_node.split(":")[1].replace(" ", "")
         slectedNode_list.append(node_selected)
+        
+        
       
         
         if ip_Node['nodes'][0] == node_selected:
