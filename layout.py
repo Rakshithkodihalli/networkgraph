@@ -14,17 +14,17 @@ import dash_bootstrap_components as dbc
 # Constants
 # --------------
 # default node and edge size
-DEFAULT_NODE_SIZE = 1
-DEFAULT_EDGE_SIZE = 1
+#DEFAULT_NODE_SIZE = 1
+#DEFAULT_EDGE_SIZE = 1
 
 # default node and egde color
-DEFAULT_COLOR = '#FFB300'
+#DEFAULT_COLOR = '#FFB300'
 
 
-colors = {
-    'background': '#817066',
-    'text': '#7FDBFF'
-}
+#colors = {
+#    'background': '#817066',
+#    'text': '#7FDBFF'
+#}
 
 
 
@@ -68,6 +68,7 @@ DEFAULT_OPTIONS = {
 def fetch_flex_row_style():
     return {'display': 'flex', 'flex-direction': 'row', 'justify-content': 'center', 'align-items': 'center'}
 
+
 def create_row(children, style=fetch_flex_row_style()):
     return dbc.Row(children,
                    style=style,
@@ -100,8 +101,6 @@ def get_app_layout( ):
         multiple=True ),
         html.Button('Submit', id='submit_', n_clicks=0),
         html.Button('Reset',id='reset_button', n_clicks=0),
-        
-        #html.Div('Double click to delete graph'),
         #html.Div(id='file loaded'),
 
         #create_row([dbc.Col([dbc.Form([html.H6("Color nodes/Edges")]),
@@ -117,9 +116,7 @@ def get_app_layout( ):
         #html.Div(id = 'unselectednodes')
                 #]),
       #visdcc.Network(id = 'net',selection = {'nodes':[], 'edges':[]},  options = dict(height= '600px', width= '100%')),
-      visdcc.Network(id = 'net',selection = {'nodes':[], 'edges':[]}, options = get_options()),
-      
-      
+      visdcc.Network(id = 'net',selection = {'nodes':[], 'edges':[]}, options = get_options())     
       ])
 
 

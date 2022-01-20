@@ -88,7 +88,7 @@ def initial_nodes(edges_df):
     return initial_nodes , sub_graph
 
 
-
+'''
 # nodes and edges for coloring 
 def Color_egdesnodes(edgesdf, nodedf=None):
     edge_columns = []
@@ -123,7 +123,7 @@ def Color_egdesnodes(edgesdf, nodedf=None):
             node_color =None #
 
     return edge_color , node_color
-
+'''
  
 
 
@@ -169,8 +169,7 @@ slectedNode_list = []
 def networkgraph(edgesdf, nodedf, ip_Node):
         
     mydata1, nodes_list = Data_foramting(edgesdf, nodedf)
-    edges_color , nodes_color  = Color_egdesnodes(edgesdf, nodedf)
-    
+    #edges_color , nodes_color  = Color_egdesnodes(edgesdf, nodedf)
     # calling initial node list 
     first_clusternodes , sub_graph= initial_nodes(edgesdf)
     
@@ -184,7 +183,6 @@ def networkgraph(edgesdf, nodedf, ip_Node):
     op_node = 'Selected nodes : '
     # Display initial clusters [Before any node selection]
     if len(ip_Node['nodes']) ==0:
-        #mydata ={'nodes':[ mydata1['node'][0], mydata1['node'][5], mydata1['node'][6] ],
         mydata ={'nodes':initial_nodeDict, 'edges':[]}        
         return [ mydata ] 
    

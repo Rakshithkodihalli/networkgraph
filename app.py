@@ -1,10 +1,7 @@
 # Application buiding using dash #
 import dash
 from dash.dependencies import Input, Output, State
-from dash import dcc, html
-import visdcc
-#import preprocess
-from  preprocess import  initial_nodes, Data_foramting , Color_egdesnodes , networkgraph, filefinding, slectedNode_list
+from  preprocess import  initial_nodes, Data_foramting , networkgraph, filefinding, slectedNode_list
 import numpy as np
 import sys
 import os
@@ -30,7 +27,6 @@ app.layout = get_app_layout
 
 def upload_data(contents, filename, date,  n_clicks, ip_Node):
     if (n_clicks ==0) or (contents is None and n_clicks > 0):
-        
         edgesdf= pd.read_csv('data/edgess.csv')
         nodedf = pd.read_csv('data/nodee.csv')
         mydata = networkgraph(edgesdf , nodedf, ip_Node)       
@@ -52,7 +48,7 @@ def update(reset):
     
     
 if __name__ == '__main__':   
-    app.run_server(debug=False, host="0.0.0.0")
+    app.run_server(debug=True)
     
     
     
