@@ -86,7 +86,7 @@ def get_app_layout():
     nodes_color = ['A', 'B']
     encoded_image = base64.b64encode(open((os.path.join(os.path.dirname(__file__), 'assest/logo.PNG')), 'rb').read())
     return  html.Div([
-            (html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()), width="50px")),
+            (html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()), width="45px")),
             dcc.Upload(id='upload-data',children=html.Div(['Drag and Drop or ',html.A('Select Files')]),
             style={
             'width': '100%',

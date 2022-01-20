@@ -164,7 +164,9 @@ def filefinding(contents , filename):
     else :
         edgesdf = None
         nodedf = None
-'''               
+
+
+             
 slectedNode_list = []
 def networkgraph(edgesdf, nodedf, ip_Node):
         
@@ -232,4 +234,3 @@ def networkgraph(edgesdf, nodedf, ip_Node):
                 #return [op_node, mydata,unexplorednodes ]             
                 #return [op_node, mydata]
         return [ mydata]
-'''
