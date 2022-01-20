@@ -170,6 +170,7 @@ def networkgraph(edgesdf, nodedf, ip_Node):
         
     mydata1, nodes_list = Data_foramting(edgesdf, nodedf)
     #edges_color , nodes_color  = Color_egdesnodes(edgesdf, nodedf)
+
     # calling initial node list 
     first_clusternodes , sub_graph= initial_nodes(edgesdf)
     

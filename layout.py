@@ -82,8 +82,8 @@ def get_options():
     
     
     
-def get_app_layout( ):
-   
+def get_app_layout():
+    nodes_color = ['A', 'B']
     encoded_image = base64.b64encode(open((os.path.join(os.path.dirname(__file__), 'assest/logo.PNG')), 'rb').read())
     return  html.Div([
             (html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()), width="50px")),
@@ -108,10 +108,7 @@ def get_app_layout( ):
         #dcc.Dropdown(
         #id='dropdown',
         #options=[{'label': i, 'value': i} for i in edges_color], value=None),
-        #dcc.Dropdown(
-        #id='dropdown2',
-        #options=[{'label': i, 'value': i} for i in nodes_color],
-        #value=None),
+        #dcc.Dropdown(id='dropdown2',options=[{'label': i, 'value': i} for i in nodes_color],value=None),
         #html.Div(id = 'nodes'),
         #html.Div(id = 'unselectednodes')
                 #]),

@@ -41,6 +41,7 @@ def upload_data(contents, filename, date,  n_clicks, ip_Node):
 
 @app.callback([Output('submit_','n_clicks'), Output('net', 'selection')],
              Input('reset_button','n_clicks'))
+
 def update(reset):
     slectedNode_list.clear()
     return 0,  {'nodes': [], 'edges': []}
@@ -48,7 +49,7 @@ def update(reset):
     
     
 if __name__ == '__main__':   
-    app.run_server(debug=False, port="0.0.0.0")
+    app.run_server(debug=True)
     
     
     
