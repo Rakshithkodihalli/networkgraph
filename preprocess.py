@@ -178,16 +178,19 @@ def networkgraph(edgesdf, nodedf, ip_Node):
     first_clusternodes , sub_graph= initial_nodes(edgesdf)
     
     # calling initial node dict object 
+    
     initial_nodeDict = []
     for i in mydata1['node']:
         if (i['id']) in first_clusternodes:
             initial_nodeDict.append(i)
          
-        
+    #print(initial_nodeDict)  
     op_node = 'Selected nodes : '
     # Display initial clusters [Before any node selection]
     if len(ip_Node['nodes']) ==0:
-        mydata ={'nodes':initial_nodeDict, 'edges':[]}        
+      #  initial_nodeDict = [{'id': 'P1', 'label': 'P1_label', 'Node_weight': 14, 'pagetype': 'Entry', 'shape': 'dot', 'size': 5, 'Type': 'A'}, {'id': 'P13', 'label': 'P13_label', 'Node_weight': 9, 'pagetype': 'mid', 'shape': 'dot', 'size': 5, 'Type': 'A'}, {'id': 'P19', 'label': 'P19_label', 'Node_weight': 1, 'pagetype': 'mid', 'shape': 'dot', 'size': 5, 'Type': 'A'}]
+        mydata ={'nodes':initial_nodeDict, 'edges':[]}    
+        print(mydata)    
         return [ mydata ] 
    
    
@@ -197,37 +200,39 @@ def networkgraph(edgesdf, nodedf, ip_Node):
         op_node += str(ip_Node['nodes'][0])  
         node_selected = op_node.split(":")[1].replace(" ", "")
         slectedNode_list.append(node_selected)
-        print(slectedNode_list)
+        #print(slectedNode_list)
         print(node_selected)
               
       
         
-    if ip_Node['nodes'][0] == node_selected:
-        print(ip_Node['nodes'])
-        unique_groupNode = np.unique(slectedNode_list)
-        print(unique_groupNode)
-        # edge filtering
-        z = []
-        edges = []
-        for i in mydata1['edges']:
-            if (i['from']) in unique_groupNode  or (i['to'] in unique_groupNode):
-                x = i['from']
-                y = i['to']
-                z.append(x)
-                z.append(y)
-                edges.append(i)
-        node_list = list(set(z))
-        # cluster_nodes contains all nodes   selected nodes  +  free suspended nodes 
-        node_list.extend(first_clusternodes)
+        if ip_Node['nodes'][0] == node_selected:
+            print(ip_Node['nodes'])
+            unique_groupNode = np.unique(slectedNode_list)
+            print(unique_groupNode)
+            # edge filtering
+            z = []
+            edges = []
+            for i in mydata1['edges']:
+                if ((i['from']) in unique_groupNode)  or ((i['to'] in unique_groupNode)):
+                    x = i['from']
+                    y = i['to']
+                    z.append(x)
+                    z.append(y)
+                    edges.append(i)
+            node_list = list(set(z))
+            # cluster_nodes contains all nodes   selected nodes  +  free suspended nodes 
+            node_list.extend(first_clusternodes)
                 
-        #node filtering
-        node = []
-        for i in mydata1['node']:
-            if (i['id']) in node_list:
-                node.append(i)
+            #node filtering
+            node = []
+            for i in mydata1['node']:
+                if (i['id']) in node_list:
+                    node.append(i)
         
         # parsing new nodes and edges to display network graph     
-        mydata ={ 'nodes':node,'edges':edges }
+            mydata ={ 'nodes':node,'edges':edges }
+            
+            
                
         # parse  unexplored nodes            
         #if node_selected in nodes_list:
@@ -237,4 +242,5 @@ def networkgraph(edgesdf, nodedf, ip_Node):
         #print("end") 
         #return [op_node, mydata,unexplorednodes ]             
         #return [op_node, mydata]
+    
     return [ mydata]
