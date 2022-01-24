@@ -195,6 +195,7 @@ def networkgraph(edgesdf, nodedf, ip_Node):
    
     # Display nodes and edges on user choose [ Atlest one node selection]
     if len(ip_Node['nodes']) > 0 :
+        print(ip_Node['nodes'])
         #print("start")
         op_node += str(ip_Node['nodes'][0])  
         node_selected = op_node.split(":")[1].replace(" ", "")
@@ -204,6 +205,19 @@ def networkgraph(edgesdf, nodedf, ip_Node):
               
       
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         unique_groupNode = np.unique(slectedNode_list)
         #print(unique_groupNode)
         # edge filtering
@@ -211,7 +225,7 @@ def networkgraph(edgesdf, nodedf, ip_Node):
         edges = []
         for i in mydata1['edges']:
             print(i)
-            if ((i['from']) in unique_groupNode)  or ((i['to'] in unique_groupNode)):
+            if ((i['from']) in unique_groupNode)  or ((i['to'] in unique_groupNode) or  ((i['from']) in unique_groupNode)  and ((i['to'] in unique_groupNode))):
                 x = i['from']
                 y = i['to']
                 z.append(x)
